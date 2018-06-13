@@ -1,20 +1,29 @@
 // console.log("hello raina");
+// interface Human {
+//     name:string;
+//     age:number;
+//     gender:string;
+// }
+// dist -> js ㅍㅏ일내에서는 interface내부를 볼 수 없다. 하지만, class, public을 쓰는 경우에는 모두 오픈된다.
 
-const name = "Raina",
-age = 24,
-gender = "female";
-// const sayHi = (name, age, gender?) => {
-//     console.log(`hello ${name}, you are ${age}, you are a ${gender}`);
-// };
-// const sayHi = (name:string, age:number, gender:string):void => {
-//     console.log(`hello ${name}, you are ${age}, you are a ${gender}`);
-// };
+class Human{
+    public name: string;
+    // private relationship: boolean;
+    public age: number;
+    public gender: string;
+    constructor(name: string, age: number, gender: string) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+}
 
-const sayHi = (name:string, age:number, gender:string): string => {
-    return `hello ${name}, you are ${age}, you are a ${gender}`;
+const Sujin = new Human('Jung SU jin', 222, 'Female');
+
+const sayHi = (person:Human): string => {
+    return `hello ${person.name}, you are ${person.age}, you are a ${person.gender}`;
 };
 
-// sayHi(name, age, gender);
-console.log(sayHi("HaeLim", 222, "female"));
+console.log(sayHi(Sujin));
 
 export {};
