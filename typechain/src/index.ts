@@ -43,11 +43,12 @@ let blockchain: [Block] = [genesisBlock];
 
 const getBlockChain = (): Block[] => blockchain;
 
-const getLatestBlock = (): Block => blockchain[blockchain.length - 1];
+// 가장 최근 block값 가져오기
+const getLatestBlock = (): Block => blockchain[blockchain.length - 1]; 
 
 const getNewTimeStamp = (): number => Math.round(new Date().getTime() / 1000);
 
-const createNewBlock = (data: string) : Block => {
+const createNewBlock = (data: string) : Block => { 
     const previousBlock : Block = getLatestBlock();
     const newIndex : number = previousBlock.index + 1;
     const newTimestamp : number = getNewTimeStamp();
@@ -74,7 +75,7 @@ const getHashforBlock = (aBlock: Block): string =>
 );
 
 // #블록체인의 기바은 블록들이 자신의 전 블록으로의 링크가 존재함. 체크하는 함수
-const isBlockValid = (candidateBlock:Block, previousBlock: Block):boolean => {
+const isBlockValid = (candidateBlock:Block, previousBlock: Block): boolean => {
     if(!Block.validateStructure(previousBlock))  // 앞선 블록의 데이터가 유효한지 체크 
     {
         return false;
@@ -89,7 +90,7 @@ const isBlockValid = (candidateBlock:Block, previousBlock: Block):boolean => {
     }
 };
 
-const addBlock = (candidateBlock: Block) :void => {
+const addBlock = (candidateBlock: Block) : void => {
     if ( isBlockValid(candidateBlock, getLatestBlock()) ) {
         blockchain.push(candidateBlock);
     } else {
@@ -100,7 +101,7 @@ const addBlock = (candidateBlock: Block) :void => {
 // console.log(getLatestBlock());
 createNewBlock("secondBlock");
 createNewBlock("thirdBlock");
-createNewBlock("forthBlock");
+// createNewBlock("forthBlock");
 
 console.log(blockchain);
 
